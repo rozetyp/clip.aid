@@ -19,7 +19,7 @@ ClipAid is a **privacy-first alternative to Grammarly** that improves your text 
 - ✅ Text stays on YOUR computer
 - ✅ Uses YOUR local AI (LM Studio, Ollama, etc.)
 - ✅ Works offline
-- ✅ Open source (898 lines you can read)
+- ✅ Open source (994 lines you can read)
 - ✅ Free forever
 
 ---
@@ -45,7 +45,7 @@ ClipAid is a **privacy-first alternative to Grammarly** that improves your text 
 
 ### **2. Run ClipAid**
 
-1. Download `ClipAid-Optimized.exe`
+1. Download `ClipAid-Pro.exe`
 2. Double-click to run
 3. Icon appears in system tray (bottom-right, near clock)
 4. Copy any text (Ctrl+C)
@@ -206,7 +206,7 @@ Verify the code yourself:
 
 ```powershell
 # Compile (requires .NET Framework 4.0 - built into Windows)
-C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /out:ClipAid-Optimized.exe ClipAid-Pro.cs
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs
 
 # Your build should match provided .exe
 ```
@@ -229,7 +229,7 @@ Want different settings for work vs personal?
 
 1. Copy `ClipAid.config.json` to `ClipAid-Work.config.json`
 2. Edit work config
-3. Run ClipAid with: `ClipAid-Optimized.exe` (uses ClipAid.config.json)
+3. Run ClipAid with: `ClipAid-Pro.exe` (uses ClipAid.config.json)
 4. Or: Rename configs when switching contexts
 
 ---
@@ -251,7 +251,7 @@ Want different settings for work vs personal?
 ### **Report Issues**
 
 If you find ANY behavior not documented:
-1. Check `CLIPAID_CODE_ANALYSIS.md` (line numbers provided)
+1. Check `TRANSPARENCY_REPORT.md` (line numbers provided)
 2. Search ClipAid-Pro.cs for the function
 3. Report with: What happened vs what documentation says
 
@@ -268,7 +268,7 @@ Feature requests welcome! Especially:
 Pull requests must maintain transparency:
 - Keep single-file architecture
 - Add inline comments for complex logic
-- Update CLIPAID_CODE_ANALYSIS.md
+- Update TRANSPARENCY_REPORT.md
 - No external dependencies
 - No network calls except localhost AI
 
@@ -311,7 +311,7 @@ People are tired of not knowing what Grammarly does with their data. Whether it'
 
 ## 📞 Contact
 
-- **Issues:** Check CLIPAID_CODE_ANALYSIS.md first
+- **Issues:** Check TRANSPARENCY_REPORT.md first
 - **Questions:** Read ClipAid-Pro.cs (994 lines, very readable)
 - **Verification:** Build from source and compare
 

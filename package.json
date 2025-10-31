@@ -1,0 +1,23 @@
+{
+  "name": "clipaid-landing",
+  "version": "1.0.0",
+  "description": "ClipAid - Privacy-first AI writing assistant landing page",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "clipaid",
+    "ai",
+    "privacy",
+    "writing-assistant"
+  ],
+  "author": "",
+  "license": "Unlicense",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

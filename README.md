@@ -83,7 +83,7 @@ You copy text → ClipAid reads clipboard → Sends to http://127.0.0.1:1234 →
 3. **Network Monitor:** Use Wireshark - you'll see ONLY localhost traffic
 4. **File Monitor:** Use Process Monitor - you'll see ONLY `ClipAid.config.json`
 
-See [CLIPAID_CODE_ANALYSIS.md](CLIPAID_CODE_ANALYSIS.md) for complete code documentation.
+See [TRANSPARENCY_REPORT.md](TRANSPARENCY_REPORT.md) for complete code documentation.
 
 ---
 

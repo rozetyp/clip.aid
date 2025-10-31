@@ -22,6 +22,17 @@ app.get('/ClipAid-Pro.exe', (req, res) => {
   res.sendFile(path.join(__dirname, 'ClipAid-Pro.exe'));
 });
 
+// SEO routes
+app.get('/sitemap.xml', (req, res) => {
+  res.type('application/xml');
+  res.sendFile(path.join(__dirname, 'sitemap.xml'));
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.sendFile(path.join(__dirname, 'robots.txt'));
+});
+
 // 404 handler
 app.use((req, res) => {
   res.status(404).send('Not Found');

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /ClipAid-Pro.cs
+Allow: /ClipAid-Pro.exe
+Allow: /hero.png
+
+Sitemap: https://clipaid.up.railway.app/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1

@@ -448,8 +448,9 @@
                         </svg>
                         <div class="flex-1 text-left">
                             <h4 class="text-sm font-semibold text-white mb-2">Compile from source (optional)</h4>
-                            <p class="text-xs text-gray-400 mb-3">Download <code class="text-blue-400">ClipAid-Pro.cs</code> and run this command in your terminal:</p>
-                            <pre class="text-xs text-gray-300 bg-gray-900/80 p-3 rounded border border-gray-700 overflow-x-auto"><code>C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs</code></pre>
+                            <p class="text-xs text-gray-400 mb-3">Download <code class="text-blue-400">ClipAid-Pro.cs</code>, open PowerShell in that folder, and run:</p>
+                            <pre class="text-xs text-gray-300 bg-gray-900/80 p-3 rounded border border-gray-700 overflow-x-auto whitespace-pre-wrap break-all"><code>csc /target:winexe ClipAid-Pro.cs</code></pre>
+                            <p class="text-xs text-gray-500 mt-2">Requires Visual Studio or .NET Framework SDK installed</p>
                         </div>
                     </div>
                 </div>

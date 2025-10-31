@@ -438,32 +438,21 @@
                         Download Source (.cs)
                     </a>
                 </div>
-                <p class="text-gray-400 mb-6">Ready to run • No installation • Windows only</p>
+                <p class="text-gray-400 mb-8">Ready to run • No installation • Windows only</p>
                 
                 <!-- Compilation Instructions -->
-                <details class="max-w-2xl mx-auto mt-8 bg-gray-800/50 rounded-lg border border-gray-700">
-                    <summary class="px-6 py-4 cursor-pointer text-left font-semibold text-white hover:bg-gray-800/70 transition rounded-lg">
-                        🔧 Want to compile from source? Click here
-                    </summary>
-                    <div class="px-6 pb-6 pt-2 text-left space-y-4">
-                        <div class="bg-gray-900 p-4 rounded border border-gray-700">
-                            <p class="text-sm text-gray-400 mb-2">Using Visual Studio or Rider:</p>
-                            <ol class="text-sm text-gray-300 space-y-2 list-decimal list-inside">
-                                <li>Download <code class="text-blue-400">ClipAid-Pro.cs</code></li>
-                                <li>Open in Visual Studio / Rider</li>
-                                <li>Build → Build Solution (or press F6)</li>
-                                <li>Find <code class="text-blue-400">ClipAid-Pro.exe</code> in <code class="text-gray-400">bin/Debug</code> or <code class="text-gray-400">bin/Release</code></li>
-                            </ol>
+                <div class="max-w-3xl mx-auto mt-8 bg-gray-800/30 rounded-lg border border-gray-700/50 p-6">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+                        </svg>
+                        <div class="flex-1 text-left">
+                            <h4 class="text-sm font-semibold text-white mb-2">Compile from source (optional)</h4>
+                            <p class="text-xs text-gray-400 mb-3">Download <code class="text-blue-400">ClipAid-Pro.cs</code> and run this command in your terminal:</p>
+                            <pre class="text-xs text-gray-300 bg-gray-900/80 p-3 rounded border border-gray-700 overflow-x-auto"><code>C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs</code></pre>
                         </div>
-                        <div class="bg-gray-900 p-4 rounded border border-gray-700">
-                            <p class="text-sm text-gray-400 mb-2">Using command line (requires .NET Framework 4.0+ or Windows SDK):</p>
-                            <pre class="text-xs text-gray-300 bg-black/50 p-3 rounded overflow-x-auto"><code>csc /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs</code></pre>
-                            <p class="text-xs text-gray-500 mt-2">Or use the C# compiler path directly:</p>
-                            <pre class="text-xs text-gray-300 bg-black/50 p-3 rounded overflow-x-auto mt-1"><code>C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs</code></pre>
-                        </div>
-                        <p class="text-xs text-gray-500 italic">💡 Compiling yourself ensures complete transparency and lets you verify every line of code.</p>
                     </div>
-                </details>
+                </div>
             </div>
         </article>
     </main>

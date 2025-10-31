@@ -438,9 +438,34 @@
                         Download Source (.cs)
                     </a>
                 </div>
-                <p class="text-gray-400">Ready to run • No installation • Windows only</p>
+                <p class="text-gray-400 mb-6">Ready to run • No installation • Windows only</p>
+                
+                <!-- Compilation Instructions -->
+                <details class="max-w-2xl mx-auto mt-8 bg-gray-800/50 rounded-lg border border-gray-700">
+                    <summary class="px-6 py-4 cursor-pointer text-left font-semibold text-white hover:bg-gray-800/70 transition rounded-lg">
+                        🔧 Want to compile from source? Click here
+                    </summary>
+                    <div class="px-6 pb-6 pt-2 text-left space-y-4">
+                        <div class="bg-gray-900 p-4 rounded border border-gray-700">
+                            <p class="text-sm text-gray-400 mb-2">Using Visual Studio or Rider:</p>
+                            <ol class="text-sm text-gray-300 space-y-2 list-decimal list-inside">
+                                <li>Download <code class="text-blue-400">ClipAid-Pro.cs</code></li>
+                                <li>Open in Visual Studio / Rider</li>
+                                <li>Build → Build Solution (or press F6)</li>
+                                <li>Find <code class="text-blue-400">ClipAid-Pro.exe</code> in <code class="text-gray-400">bin/Debug</code> or <code class="text-gray-400">bin/Release</code></li>
+                            </ol>
+                        </div>
+                        <div class="bg-gray-900 p-4 rounded border border-gray-700">
+                            <p class="text-sm text-gray-400 mb-2">Using command line (requires .NET Framework 4.0+ or Windows SDK):</p>
+                            <pre class="text-xs text-gray-300 bg-black/50 p-3 rounded overflow-x-auto"><code>csc /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs</code></pre>
+                            <p class="text-xs text-gray-500 mt-2">Or use the C# compiler path directly:</p>
+                            <pre class="text-xs text-gray-300 bg-black/50 p-3 rounded overflow-x-auto mt-1"><code>C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs</code></pre>
+                        </div>
+                        <p class="text-xs text-gray-500 italic">💡 Compiling yourself ensures complete transparency and lets you verify every line of code.</p>
+                    </div>
+                </details>
             </div>
-        </section>
+        </article>
     </main>
 
     <!-- Footer -->

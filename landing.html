@@ -43,7 +43,7 @@
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     
-    <!-- Favicon (add this) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/hero.png">
     
     <!-- Tailwind CSS CDN -->
@@ -52,6 +52,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         /* Apply Inter font */
         body {
@@ -75,9 +76,13 @@
         html {
             scroll-behavior: smooth;
         }
+        /* Basic 'hidden' utility for mobile menu */
+        .hidden-menu {
+            display: none;
+        }
     </style>
     
-    <!-- Structured Data (JSON-LD) - Enhanced for SEO -->
+    <!-- Structured Data (JSON-LD) - No changes, this is excellent -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -225,12 +230,12 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo/Title -->
                 <div class="flex-shrink-0 flex items-center">
-                    <h1 class="text-2xl font-bold text-white flex items-center">
+                    <a href="#" class="text-2xl font-bold text-white flex items-center">
                         <svg class="w-7 h-7 mr-2 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11.35 3.836c-.065.22-.1.447-.1.679 0 .403.08.79.23 1.158l.11.272c.27.64.68 1.194 1.2 1.636.515.437 1.13.734 1.8.87.67.137 1.37.03 2.01-.32l.145-.078A12.02 12.02 0 0 1 21 12a12.02 12.02 0 0 1-5.605 9.712l-.146-.079c-.64-.35-1.34-.456-2.01-.32-.67.136-1.285.433-1.8.87-.52.442-.93.996-1.2 1.636l-.11.272a3.81 3.81 0 0 1-.23 1.158c0 .232-.035.459-.1.679a1.002 1.002 0 0 1-1.92.368c.03-.12.044-.24.044-.359 0-.403-.08-.79-.23-1.158l-.11-.272a4.344 4.344 0 0 0-1.2-1.636 4.344 4.344 0 0 0-1.8-.87c-.67-.137-1.37-.03-2.01.32l-.145.078A12.02 12.02 0 0 1 3 12a12.02 12.02 0 0 1 5.605-9.712l.146.079c.64.35 1.34.456 2.01.32.67-.136 1.285-.433 1.8-.87.52-.442.93-.996 1.2-1.636l.11-.272c.15-.368.23-.755.23-1.158 0-.12-.015-.24-.044-.359A1.002 1.002 0 0 1 11.35 3.836ZM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                         </svg>
                         ClipAid
-                    </h1>
+                    </a>
                 </div>
                 <!-- Desktop Nav Links -->
                 <div class="hidden md:flex md:items-center md:space-x-8">
@@ -240,34 +245,61 @@
                         Download
                     </a>
                 </div>
-                <!-- Mobile Menu Button (placeholder) -->
-                <div class="md:hidden">
-                    <a href="#download" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150">
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <a href="#download" class="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150">
                         Download
                     </a>
+                    <button id="mobile-menu-toggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Hamburger Icon -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </nav>
+
+        <!-- Mobile Menu, hidden by default -->
+        <div id="mobile-menu" class="hidden-menu md:hidden fixed inset-0 bg-gray-900/95 z-50 p-4" role="dialog" aria-modal="true">
+            <div class="flex justify-between items-center mb-8">
+                <span class="text-2xl font-bold text-white">Menu</span>
+                <button id="mobile-menu-close" class="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700">
+                    <span class="sr-only">Close menu</span>
+                    <!-- Close (X) Icon -->
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-4">
+                <a href="#features" class="text-gray-300 hover:text-white transition duration-150 block px-4 py-2 rounded-md text-lg font-medium">Features</a>
+                <a href="#transparency" class="text-gray-300 hover:text-white transition duration-150 block px-4 py-2 rounded-md text-lg font-medium">Transparency</a>
+            </div>
+        </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="pt-24 pb-32 bg-gray-900" itemscope itemtype="https://schema.org/SoftwareApplication">
+        <section id="hero" class="pt-24 pb-32 bg-gray-900 overflow-hidden" itemscope itemtype="https://schema.org/SoftwareApplication">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6 flex justify-center" itemprop="name">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 whitespace-nowrap">Your text, your computer, your AI.</span>
+                <h2 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6" itemprop="name">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Your text, your computer, your AI.</span>
                 </h2>
                 <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-300 mb-10" itemprop="description">
-                    <strong>Privacy-first Grammarly alternative.</strong> Uses your local AI to improve text. <span itemprop="fileSize">35KB</span>, open source, free forever.
+                    <strong>The privacy-first Grammarly alternative.</strong> ClipAid uses your local AI to improve text in any app. <span itemprop="fileSize">35KB</span>, open source, and free forever.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-                    <a href="#download" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 shadow-lg">
+                    <a href="#download" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-all duration-150 shadow-lg hover:shadow-blue-500/50">
                         Download ClipAid
                     </a>
-                    <a href="https://github.com/rozetyp/clip.aid/blob/main/ClipAid-Pro.cs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-3 border border-gray-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition duration-150">
+                    <a href="https://github.com/rozetyp/clip.aid/blob/main/ClipAid-Pro.cs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-8 py-3 border border-gray-600 text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 hover:border-gray-500 transition-all duration-150">
                         View Source Code
                     </a>
                 </div>
+                
+                <!-- Reverted to original image implementation -->
                 <img src="hero.png" alt="ClipAid interface showing grammar checking and text improvement in Windows applications - Free Grammarly alternative screenshot" class="mx-auto max-w-xl opacity-80 rounded-lg shadow-2xl" itemprop="screenshot" loading="eager" width="800" height="600" />
             </div>
         </section>
@@ -276,14 +308,14 @@
         <article id="features" class="py-24 bg-gray-800/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <header class="text-center mb-16">
-                    <h3 class="text-3xl font-bold text-white sm:text-4xl">Why ClipAid Exists</h3>
-                    <p class="mt-4 text-lg text-gray-300">
-                        People are tired of not knowing what happens to their data. Whether it's a confidential work email, a private journal entry, or a sensitive document—<strong>your text shouldn't leave your computer without your explicit consent.</strong>
+                    <h3 class="text-3xl font-bold text-white sm:text-4xl">Why Choose a Local-First AI?</h3>
+                    <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
+                        Your text—from confidential work emails to private journal entries—shouldn't leave your computer without your explicit consent.
                     </p>
                 </header>
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Feature 1: Privacy First -->
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-all duration-300 hover:scale-[1.03] hover:border-blue-500/50">
                         <div class="flex-shrink-0">
                             <svg class="w-12 h-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
@@ -295,7 +327,7 @@
                         </p>
                     </div>
                     <!-- Feature 2: Lightweight & Fast -->
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-all duration-300 hover:scale-[1.03] hover:border-blue-500/50">
                         <div class="flex-shrink-0">
                             <svg class="w-12 h-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
@@ -303,11 +335,11 @@
                         </div>
                         <h3 class="mt-6 text-2xl font-bold text-white">Lightweight & Fast</h3>
                         <p class="mt-4 text-gray-300">
-                            A single executable file of just <strong>35KB</strong>. ClipAid uses minimal system resources and appears instantly near your cursor when you need it. No bloat, just pure function.
-                        </p>
+                            A single executable file of just <strong>35KB</strong>. ClipAid uses minimal system resources and appears instantly near your cursor. No bloat, just pure function.
+                        </all>
                     </div>
                     <!-- Feature 3: Universal -->
-                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 transition-all duration-300 hover:scale-[1.03] hover:border-blue-500/50">
                         <div class="flex-shrink-0">
                             <svg class="w-12 h-12 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h12A2.25 2.25 0 0 1 20.25 6v12A2.25 2.25 0 0 1 18 20.25H6A2.25 2.25 0 0 1 3.75 18V6ZM16.5 6.75H7.5v.75h9v-.75ZM16.5 9.75H7.5v.75h9v-.75ZM16.5 12.75H7.5v.75h9v-.75Z" />
@@ -320,33 +352,41 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </article>
 
-        <!-- How It Works Section -->
+        <!-- How It Works Section - Redesigned as a timeline -->
         <article id="how-it-works" class="py-24 bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <header class="text-center mb-16">
+                <header class="text-center mb-20">
                     <h3 class="text-3xl font-bold text-white sm:text-4xl">A Simple, Seamless Workflow</h3>
                 </header>
-                <div class="grid md:grid-cols-3 gap-8 text-center">
-                    <!-- Step 1 -->
-                    <section class="flex flex-col items-center">
-                        <div class="flex items-center justify-center w-20 h-20 rounded-full bg-blue-600 text-white text-3xl font-bold mb-4 border-4 border-blue-500/50 shadow-lg">1</div>
-                        <h4 class="text-xl font-semibold text-white mb-2">Select Text</h4>
-                        <p class="text-gray-300">Highlight any text in any application (email, doc, browser, code).</p>
-                    </section>
-                    <!-- Step 2 -->
-                    <section class="flex flex-col items-center">
-                        <div class="flex items-center justify-center w-20 h-20 rounded-full bg-blue-600 text-white text-3xl font-bold mb-4 border-4 border-blue-500/50 shadow-lg">2</div>
-                        <h4 class="text-xl font-semibold text-white mb-2">Copy (Ctrl+C)</h4>
-                        <p class="text-gray-300">Press your copy hotkey. ClipAid monitors your clipboard for new text.</p>
-                    </section>
-                    <!-- Step 3 -->
-                    <section class="flex flex-col items-center">
-                        <div class="flex items-center justify-center w-20 h-20 rounded-full bg-blue-600 text-white text-3xl font-bold mb-4 border-4 border-blue-500/50 shadow-lg">3</div>
-                        <h4 class="text-xl font-semibold text-white mb-2">Get Enhancements</h4>
-                        <p class="text-gray-300">A small popup appears with an AI-enhanced version of your text.</p>
-                    </section>
+                
+                <div class="relative">
+                    <!-- Connecting line - Desktop only -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gray-700 -translate-y-1/2" aria-hidden="true"></div>
+                    <div class="hidden md:block absolute top-1/2 left-1/3 w-px h-20 bg-gray-700 -translate-y-1/2" aria-hidden="true"></div>
+                    <div class="hidden md:block absolute top-1/2 left-2/3 w-px h-20 bg-gray-700 -translate-y-1/2" aria-hidden="true"></div>
+
+                    <div class="relative grid md:grid-cols-3 gap-12">
+                        <!-- Step 1 -->
+                        <section class="relative bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-3xl font-bold mb-6 border-4 border-blue-500/50 shadow-lg absolute -top-8 left-1/2 -translate-x-1/2 md:left-8 md:-translate-x-0 md:-top-16">1</div>
+                            <h4 class="text-xl font-semibold text-white mb-2 text-center md:text-left pt-6 md:pt-0">Select Text</h4>
+                            <p class="text-gray-300 text-center md:text-left">Highlight any text in any application (email, doc, browser, code).</p>
+                        </section>
+                        <!-- Step 2 -->
+                        <section class="relative bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-3xl font-bold mb-6 border-4 border-blue-500/50 shadow-lg absolute -top-8 left-1/2 -translate-x-1/2 md:left-8 md:-translate-x-0 md:-top-16">2</div>
+                            <h4 class="text-xl font-semibold text-white mb-2 text-center md:text-left pt-6 md:pt-0">Copy (Ctrl+C)</h4>
+                            <p class="text-gray-300 text-center md:text-left">Press your copy hotkey. ClipAid monitors your clipboard for new text.</p>
+                        </section>
+                        <!-- Step 3 -->
+                        <section class="relative bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 text-white text-3xl font-bold mb-6 border-4 border-blue-500/50 shadow-lg absolute -top-8 left-1/2 -translate-x-1/2 md:left-8 md:-translate-x-0 md:-top-16">3</div>
+                            <h4 class="text-xl font-semibold text-white mb-2 text-center md:text-left pt-6 md:pt-0">Get Enhancements</h4>
+                            <p class="text-gray-300 text-center md:text-left">A small popup appears with an AI-enhanced version of your text.</p>
+                        </section>
+                    </div>
                 </div>
             </div>
         </article>
@@ -356,7 +396,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <header class="text-center mb-16">
                     <h3 class="text-3xl font-bold text-white sm:text-4xl">
-                        Full Transparency. <span class="text-blue-400">Audit the Code.</span>
+                        Full Transparency. <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Audit the Code.</span>
                     </h3>
                     <p class="mt-4 text-lg text-gray-300">
                         No black boxes. Single file, 994 lines, open source.
@@ -364,7 +404,7 @@
                 </header>
                 
                 <div class="max-w-3xl mx-auto space-y-6">
-                    <section class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex items-start">
+                    <section class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex items-start transition duration-300 hover:bg-gray-700/60 hover:border-gray-600">
                         <svg class="w-6 h-6 mr-4 text-blue-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9.75 6.75h9.75c.621 0 1.125-.504 1.125-1.125V6.375c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v10.25c0 .621.504 1.125 1.125 1.125Z" /></svg>
                         <div>
                             <h4 class="font-semibold text-white text-lg mb-2">Single Source File</h4>
@@ -372,7 +412,7 @@
                         </div>
                     </section>
                     
-                    <section class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex items-start">
+                    <section class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex items-start transition duration-300 hover:bg-gray-700/60 hover:border-gray-600">
                         <svg class="w-6 h-6 mr-4 text-blue-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3M19.5 8.25h1.5M12 2.25V3M15.75 3v1.5M12 18.75V21m-3.75-1.5V18.75m0 0H21m-12 0H3m9 0v-1.5m0 0c0-5.334-4.667-9.5-10.5-9.5S1.5 7.166 1.5 12.5m10.5 0c0 5.334 4.667 9.5 10.5 9.5s10.5-4.166 10.5-9.5m-10.5 0h.008v.008H12v-.008Z" /></svg>
                         <div>
                             <h4 class="font-semibold text-white text-lg mb-2">Local Server Only</h4>
@@ -380,7 +420,7 @@
                         </div>
                     </section>
                     
-                    <section class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex items-start">
+                    <section class="bg-gray-800 p-6 rounded-lg border border-gray-700 flex items-start transition duration-300 hover:bg-gray-700/60 hover:border-gray-600">
                         <svg class="w-6 h-6 mr-4 text-blue-500 flex-shrink-0 mt-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
                         <div>
                             <h4 class="font-semibold text-white text-lg mb-2">Public Domain License</h4>
@@ -392,7 +432,7 @@
                 <!-- View Source -->
                 <footer class="mt-12 text-center">
                     <a href="https://github.com/rozetyp/clip.aid/blob/main/ClipAid-Pro.cs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-3 border border-blue-600 text-lg font-medium rounded-md text-white bg-blue-600/10 hover:bg-blue-600/20 transition duration-150">
-                        <svg class="w-5 h-5 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
                         </svg>
                         View Source Code on GitHub
@@ -405,33 +445,33 @@
         <article id="download" class="py-24 bg-gray-800/50">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <header class="mb-12">
-                    <h3 class="text-3xl font-bold text-white sm:text-4xl mb-6">Get Started in 2 Minutes</h3>
+                    <h3 class="text-3xl font-bold text-white sm:text-4xl mb-10">Get Started in 2 Minutes</h3>
                 
                     <!-- Steps Container -->
-                    <div class="max-w-2xl mx-auto grid md:grid-cols-2 gap-8 text-left">
-                        <section class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-8 text-left">
+                        <section class="bg-gray-800 p-6 rounded-lg border border-gray-700 transition-all duration-300 hover:border-blue-500/50">
                             <span class="text-3xl font-bold text-blue-500">1.</span>
                             <h4 class="text-xl font-semibold text-white mt-2 mb-2">Setup Local AI</h4>
-                            <p class="text-gray-300 text-sm">Install <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">LM Studio</a>, load a model, start server.</p>
+                            <p class="text-gray-300">Install <a href="https://lmstudio.ai/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">LM Studio</a> or <a href="https://ollama.com/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">Ollama</a>, load a model, and start the local server.</p>
                         </section>
-                        <section class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                        <section class="bg-gray-800 p-6 rounded-lg border border-gray-700 transition-all duration-300 hover:border-blue-500/50">
                             <span class="text-3xl font-bold text-blue-500">2.</span>
                             <h4 class="text-xl font-semibold text-white mt-2 mb-2">Run ClipAid</h4>
-                            <p class="text-gray-300 text-sm">Download and run. Appears in system tray. Start copying text!</p>
+                            <p class="text-gray-300">Download and run the 35KB .exe. It appears in your system tray. Start copying text!</p>
                         </section>
                     </div>
                 </header>
 
                 <!-- Main CTA -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                    <a href="ClipAid-Pro.exe" class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 shadow-lg" download>
+                    <a href="ClipAid-Pro.exe" class="inline-flex items-center justify-center px-10 py-4 border border-transparent text-lg font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 shadow-lg hover:shadow-blue-500/50" download>
                         <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
                         </svg>
                         Download .exe (35KB)
                     </a>
-                    <span class="text-gray-500">or</span>
-                    <a href="ClipAid-Pro.cs" class="inline-flex items-center justify-center px-10 py-4 border border-gray-600 text-lg font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition duration-150 shadow-lg" download>
+                    <span class="text-gray-500 hidden sm:inline">or</span>
+                    <a href="ClipAid-Pro.cs" class="inline-flex items-center justify-center px-10 py-4 border border-gray-600 text-lg font-medium rounded-md text-white bg-gray-800 hover:bg-gray-700 transition duration-150" download>
                         <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
                         </svg>
@@ -440,12 +480,17 @@
                 </div>
                 <p class="text-gray-400 mb-8">Ready to run • No installation • Windows only</p>
                 
-                <!-- Compilation Instructions -->
-                <div class="max-w-6xl mx-auto mt-8 bg-gray-800/30 rounded-lg border border-gray-700/50 p-6">
+                <!-- Improved Compilation Instructions with Copy Button -->
+                <div class="max-w-2xl mx-auto mt-8 bg-gray-900 rounded-lg border border-gray-700 p-6 text-left">
                     <h4 class="text-sm font-semibold text-white mb-3 text-center">Compile from source (optional)</h4>
                     <p class="text-xs text-gray-400 mb-4 text-center">Download <code class="text-blue-400">ClipAid-Pro.cs</code>, open PowerShell in that folder, and run:</p>
-                    <pre class="text-xs text-gray-300 bg-gray-900/80 p-4 rounded border border-gray-700 overflow-x-auto mb-3"><code>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs</code></pre>
-                    <p class="text-xs text-gray-500 text-center">.NET Framework 4.0 is built into Windows</p>
+                    <div class="relative group">
+                        <button id="copy-button" class="absolute top-3 right-3 px-3 py-1 text-xs font-medium text-gray-300 bg-gray-700 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-gray-600">
+                            Copy
+                        </button>
+                        <pre id="code-snippet" class="text-xs text-gray-300 bg-gray-800/50 p-4 rounded-md border border-gray-700 overflow-x-auto"><code>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /out:ClipAid-Pro.exe ClipAid-Pro.cs</code></pre>
+                    </div>
+                    <p class="text-xs text-gray-500 text-center mt-3">.NET Framework 4.0 is built into Windows</p>
                 </div>
             </div>
         </article>
@@ -481,8 +526,84 @@
     </footer>
 
     <script>
-        // No code viewer - keep page lightweight
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle ---
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeButton = document.getElementById('mobile-menu-close');
+            const navLinks = mobileMenu.querySelectorAll('a');
+
+            const openMenu = () => mobileMenu.classList.remove('hidden-menu');
+            const closeMenu = () => mobileMenu.classList.add('hidden-menu');
+
+            if (menuToggle && mobileMenu && closeButton) {
+                menuToggle.addEventListener('click', openMenu);
+                closeButton.addEventListener('click', closeMenu);
+                // Close menu when a nav link is clicked (for anchor links)
+                navLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+            }
+
+            // --- Code Snippet Copy Button ---
+            const copyButton = document.getElementById('copy-button');
+            const codeSnippetEl = document.getElementById('code-snippet');
+
+            if (copyButton && codeSnippetEl) {
+                const codeToCopy = codeSnippetEl.querySelector('code').innerText;
+
+                copyButton.addEventListener('click', () => {
+                    // Use the recommended method for clipboard access
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(codeToCopy).then(() => {
+                            showCopiedFeedback();
+                        }).catch(err => {
+                            console.error('Failed to copy with navigator.clipboard:', err);
+                            fallbackCopy(codeToCopy); // Fallback for specific environments
+                        });
+                    } else {
+                        fallbackCopy(codeToCopy); // Fallback for older browsers
+                    }
+                });
+
+                const showCopiedFeedback = () => {
+                    const originalText = copyButton.innerText;
+                    copyButton.innerText = 'Copied!';
+                    setTimeout(() => {
+                        copyButton.innerText = originalText;
+                    }, 2000);
+                };
+
+                const fallbackCopy = (text) => {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = text;
+                    
+                    // Avoid scrolling to bottom
+                    textArea.style.top = "0";
+                    textArea.style.left = "0";
+                    textArea.style.position = "fixed";
+                    
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+                    
+                    try {
+                        const successful = document.execCommand('copy');
+                        if (successful) {
+                            showCopiedFeedback();
+                        } else {
+                            console.error('Fallback: Unable to copy');
+                        }
+                    } catch (err) {
+                        console.error('Fallback: Error copying', err);
+                    }
+                    
+                    document.body.removeChild(textArea);
+                };
+            }
+        });
     </script>
 
 </body>
 </html>
+

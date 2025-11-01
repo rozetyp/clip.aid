@@ -31,17 +31,21 @@ ClipAid is a **privacy-first alternative to Grammarly** that improves your text 
 **Option A: LM Studio** (Recommended for beginners)
 1. Download from https://lmstudio.ai
 2. Install and open LM Studio
-3. Download any model (e.g., "Phi-3-mini")
+3. Download a model (e.g., "gemma-2-2b-it" or "Phi-3-mini")
 4. Click "Start Server" (default port: 1234)
+
+**Recommended Model:** Gemma 2 2B or Gemma 3 4B - fast, accurate, works great for text editing
 
 **Option B: Ollama**
 1. Download from https://ollama.ai
 2. Install and run: `ollama serve`
-3. Pull a model: `ollama pull llama3`
+3. Pull a model: `ollama pull gemma2:2b` or `ollama pull llama3`
 
 **Option C: Any OpenAI-compatible API**
 - LocalAI, text-generation-webui, or any other
 - Must support `/v1/chat/completions` endpoint
+
+**⚠️ Note:** Thinking models (like o1, QwQ) are not supported - they take too long to respond for real-time text editing.
 
 ### **2. Run ClipAid**
 
@@ -214,12 +218,16 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /out:Clip
 ### **Use With Different AI Models**
 
 ClipAid works with ANY OpenAI-compatible API:
-- LM Studio (local)
-- Ollama (local)
-- text-generation-webui (local)
-- LocalAI (local)
-- vLLM (local or remote)
+- **LM Studio** (local) - Recommended: Gemma 2 2B, Gemma 3 4B, Phi-3-mini
+- **Ollama** (local) - Try: gemma2:2b, llama3, phi3
+- **text-generation-webui** (local)
+- **LocalAI** (local)
+- **vLLM** (local or remote)
 - Even real OpenAI API (if you trust them with your data)
+
+**Best models for ClipAid:** Small, fast models (2-7B parameters) work best for real-time text editing. Gemma 3 4B provides excellent quality with fast responses.
+
+**Not recommended:** Thinking models (o1, QwQ, DeepSeek-R1) - their extended reasoning time makes them impractical for quick text editing.
 
 Just change endpoint in settings!
 
